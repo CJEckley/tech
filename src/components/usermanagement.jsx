@@ -45,6 +45,11 @@ function Usermanagement() {
       );
       return;
     }
+    if (newUser.position !== "CEO" && !newUser.manager) {
+      alert("Manager cannot be empty for this position.");
+      return;
+    }
+
     if (newUser.manager === newUser.name && newUser.position !== "CEO") {
       alert("User can't be their own manager.");
       return;
@@ -316,23 +321,28 @@ function Usermanagement() {
             </div>
           )}
           {isDeleteConfirmationOpen && (
-            <div
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              <h3>Confirm Deletion</h3>
-              <p>
-                Are you sure you want to delete{" "}
-                {deleteUser ? deleteUser.name : "this user"}?
-              </p>
-              <button onClick={handleDeleteUser}>Yes</button>
-              <button onClick={() => setDeleteConfirmationOpen(false)}>
-                No
-              </button>
+            <div className="delete-container-outer">
+              <div
+                className="delete-container"
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <div className="delete-inner">
+                  <h3>Confirm Deletion</h3>
+                  <p>
+                    Are you sure you want to delete{" "}
+                    {deleteUser ? deleteUser.name : "this user"}?
+                  </p>
+                  <button onClick={handleDeleteUser}>Yes</button>
+                  <button onClick={() => setDeleteConfirmationOpen(false)}>
+                    No
+                  </button>
+                </div>{" "}
+              </div>
             </div>
           )}
           <div className="search-container">
