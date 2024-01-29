@@ -306,7 +306,7 @@ function Usermanagement() {
                         className="add-user-button"
                         onClick={handleCreateUser}
                       >
-                        Create User
+                        Create Employee
                       </button>
                       <button
                         className="add-user-button2"
